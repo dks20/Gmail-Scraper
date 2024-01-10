@@ -1,21 +1,22 @@
 {
-    "manifest_version": 3,
-    "name": "Simple Web Scraper",
-    "version": "1.0",
-    "description": "A simple web scraping Chrome extension",
-    "permissions": [
-      "activeTab",
-      "tabs",
-      "storage"
-    ],
-    "action": {
-      "default_popup": "popup.html"
-    },
-    "content_scripts": [
-      {
-        "matches": ["<all_urls>"],
-        "js": ["content.js"]
-      }
-    ]
-  }
+  "manifest_version": 3,
+  "name": "HTML Scraper",
+  "version": "1.0",
+  "description": "Scrape HTML data from the current webpage",
+  "permissions": ["activeTab", "storage", "tabs", "downloads"],
+  "action": {
+    "default_popup": "popup.html"  
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
+
   
